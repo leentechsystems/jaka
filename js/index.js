@@ -77,5 +77,6 @@ function onConfirm(button) {
 }
 
 $(document).ready(function() {
+    navigator.notification.confirm("Are you sure you want to exit ?", onConfirm, "Confirmation", "Yes,No"); 
     window.location = "http://192.168.2.88";
 });
