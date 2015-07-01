@@ -49,7 +49,7 @@ function onOnline() {
     $("#message").addClass('hide');
     $("#main_message").addClass('hide');
     $("#sub_message").addClass('hide');
-    window.location = "192.168.2.28";
+    window.location = "http://192.168.2.28";
      // setTimeout(function(){
      //        var ref = window.open('http://www.wufoo.com/html5/attributes/07-accept.html', '_blank', 'location=no');
      //        ref.addEventListener('loaderror', function(event) { ref.close(); location.reload(); });
