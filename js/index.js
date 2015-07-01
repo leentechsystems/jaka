@@ -27,35 +27,54 @@
 // document.addEventListener("offline", onOffline, false);
 // // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
 // //
-// function onDeviceReady() {
-//     //document.addEventListener("offline", onOffline, false);
-//     document.addEventListener("online", onOnline, false);
-// }
+function onDeviceReady() {
+    //document.addEventListener("offline", onOffline, false);
+    //document.addEventListener("online", onOnline, false);
+    document.addEventListener("backbutton", onBackKeyDown, false); //Listen to the User clicking on the back button
+}
 
-// function onOffline() {
-//     // alert('No Internet Connection!');
-//     $("body").addClass('reload');
-//     $("#loader").addClass('hide');
-//     $("#message").removeClass('hide');
-//     $("#main_message").text('No Internet Connection');
-//     $("#sub_message").text('Tap to Retry');
-//     $("#main_message").removeClass('hide');
-//     $("#sub_message").removeClass('hide');
-// }
+function onOffline() {
+    // alert('No Internet Connection!');
+    $("body").addClass('reload');
+    $("#loader").addClass('hide');
+    $("#message").removeClass('hide');
+    $("#main_message").text('No Internet Connection');
+    $("#sub_message").text('Tap to Retry');
+    $("#main_message").removeClass('hide');
+    $("#sub_message").removeClass('hide');
+}
 
-// function onOnline() {
-//     $("body").removeClass('reload');
-//     $("#loader").removeClass('hide');
-//     $("#message").addClass('hide');
-//     $("#main_message").addClass('hide');
-//     $("#sub_message").addClass('hide');
+function onOnline() {
+    $("body").removeClass('reload');
+    $("#loader").removeClass('hide');
+    $("#message").addClass('hide');
+    $("#main_message").addClass('hide');
+    $("#sub_message").addClass('hide');
     
-//      // setTimeout(function(){
-//      //        var ref = window.open('http://www.wufoo.com/html5/attributes/07-accept.html', '_blank', 'location=no');
-//      //        ref.addEventListener('loaderror', function(event) { ref.close(); location.reload(); });
-//      // }, 3000);
-// }
+     // setTimeout(function(){
+     //        var ref = window.open('http://www.wufoo.com/html5/attributes/07-accept.html', '_blank', 'location=no');
+     //        ref.addEventListener('loaderror', function(event) { ref.close(); location.reload(); });
+     // }, 3000);
+}
 
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+
+
+function onBackKeyDown(e) {
+    e.preventDefault();
+    navigator.notification.confirm("Are you sure you want to exit ?", onConfirm, "Confirmation", "Yes,No"); 
+    // Prompt the user with the choice
+}
+
+function onConfirm(button) {
+    if(button==2){//If User selected No, then we just do nothing
+        return;
+    }else{
+        navigator.app.exitApp();// Otherwise we quit the app.
+    }
+}
 
 $(document).ready(function() {
     window.location = "http://192.168.2.88";
