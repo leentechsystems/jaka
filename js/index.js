@@ -58,5 +58,5 @@
 
 
 $(document).ready(function() {
-    window.location = "http://192.168.2.28";
+    window.location = "http://192.168.2.88";
 });
